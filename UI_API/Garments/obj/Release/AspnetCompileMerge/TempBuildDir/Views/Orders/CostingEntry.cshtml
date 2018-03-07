@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "CostingEntry";
+    Layout = "~/Views/MasterPage/_Template.cshtml";
+}
+
+<script src="~/Scripts/CostingEntryAng.js"></script>
+<script src="~/Content/Template/js/dirPagination.js"></script>
+<script src="~/Content/Template/js/moment.js"></script>
+<script src="~/Content/Template/js/bootstrap-datetimepicker.js"></script>
+
+<!-- main content start-->
+<div id="page-wrapper">
+    <div class="main-page">
+        <div class="forms">
+            @*<h3 class="title1">Grid system</h3>*@
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                <li><a href="@Url.Action("CostingEntry", "Orders")">Costing Entry</a></li>
+                @*<li class="active">Data</li>*@
+            </ol>
+            <div class="grids widget-shadow">
+                <div ng-app="myApp">
+                    @*<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">*@
+                    <div ng-controller="myCtrl" ng-init="GetAllCostingEntry()" class="divList">
+                        <div class="alert alert-success" role="alert" ng-show="divMsgs">
+                            <strong>{{Msg}} </strong>.
+                        </div>
+                        <div>
+                            <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" ng-model="search" id="input-31" />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Buyer Name</label>
+                                    <select class="form-control1" ng-model="ddlCostingEntryBuyerName" ng-blur="Validations()" ng-options=" BuyerName.ID as BuyerName.NAME for BuyerName in BuyerNames">
+                                        <option value="" disabled selected><< Select Buyer Name >></option>
+                                    </select>
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorBuyerName">
+                                        Buyer Name is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Particular</label>
+                                    <select class="form-control1" ng-model="ddlCostingEntryParticular" ng-blur="Validations()" ng-options=" Particular.ID as Particular.NAME for Particular in Particulars">
+                                        <option value="" disabled selected><< Select Particular >></option>
+                                    </select>
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorParticular">
+                                        particular is Required.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Name</label>
+                                    <input type="text" class="form-control1" maxlength="50" ng-model="txtCostingEntryName" id="txtCostingEntryName" ng-blur="Validations()" placeholder="Name">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorName">
+                                        Name is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Cotton Precost</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryCottonPrecost" id="txtCostingEntryCottonPrecost" ng-blur="Validations()" placeholder="Cotton Precost">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorCottonPrecost">
+                                        Cotton Precost is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Cotton Actual</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryCottonActual" id="txtCostingEntryCottonActual" ng-blur="Validations()" placeholder="Cotton Actual">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorCottonActual">
+                                        Cotton Actual is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Rib Precost</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryRibPrecost" id="txtCostingEntryRibPrecost" ng-blur="Validations()" placeholder="Rib Precost">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorRibPrecost">
+                                        Rib Precost is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Rib Actual</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryRibActual" id="txtCostingEntryRibActualt" ng-blur="Validations()" placeholder="Rib Actual">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorRibActual">
+                                        Rib Actual is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Others Precost</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryOthersPrecost" id="txtCostingEntryOthersPrecost" ng-blur="Validations()" placeholder="Others Precost">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorOthersPrecost">
+                                        Others Precost is Required.
+                                    </div>
+                                </div>
+                                <div class="col-md-3 grid_box1">
+                                    <label for="exampleInputName2">Others Actual</label>
+                                    <input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtCostingEntryOthersActual" id="txtCostingEntryOthersActual" ng-blur="Validations()" placeholder="Others Actual">
+                                    <div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorOthersActual">
+                                        Others Actual is Required.
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-1 grid_box1">
+                                    <input type="submit" id="btnSave" class="btn btn-default" value="Save" ng-click="AddUpdateCostingEntry()" />
+                                </div>
+                                <div class="col-md-1 grid_box1">
+                                    <input type="submit" id="btnSave" class="btn btn-default" value="Cancel" ng-click="ClearFields()" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                        <br />
+                       
+                        <table class="table table-bordered">
+                            <thead> <tr> <th>Particular</th> <th>Buyer Name</th> <th>Name</th> <th>IsActive</th><th>Action</th></tr> </thead>
+                            <tbody>
+                                @*<tr ng-repeat="Order in Orders">*@
+                                <tr dir-paginate="CostingEntry in CostingEntrys|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                                    <td>
+                                        {{CostingEntry.PARTICULAR}}
+                                    </td>
+                                    <td>
+                                        {{CostingEntry.BUYERNAME}}
+                                    </td>
+                                    <td>
+                                        {{CostingEntry.NAME}}
+                                    </td>
+                                    <td>
+                                        <span ng-if="CostingEntry.ISACTIVE === 1">
+                                            <i class="fa fa-check" style="color:green;" aria-hidden="true"></i>
+                                        </span>
+                                        <span ng-if="CostingEntry.ISACTIVE === 0">
+                                            <i class="fa fa-check" style="color:red;" aria-hidden="true"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="EditCostingEntry(CostingEntry)"></i></a>
+                                        <a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="DeleteCostingEntry(CostingEntry)"></i></a>
+                                        <a href="~/Reports/Viewer/Report.aspx?ID={{CostingEntry.ID}}&Costing=true"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                                @*<b style="color: #5bc0de; margin-left: 20px;">Total Records </b>:
+                                <b>{{CostingEntrys.length}}  </b>*@
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls max-size="10"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                    @Html.Hidden("CostingEntryId")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

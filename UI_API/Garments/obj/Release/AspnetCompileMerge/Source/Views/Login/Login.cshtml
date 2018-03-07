@@ -1,0 +1,63 @@
+﻿
+@{
+	ViewBag.Title = "Login";
+	Layout = "~/Views/MasterPage/_Partial.cshtml";
+}
+
+<!-- main content start-->
+<div id="page-wrapper">
+	<div class="main-page login-page ">
+		<div class="forms">
+            
+			@*<h3 class="title1">SignIn</h3>*@
+			<div class="widget-shadow">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Dashboard")">
+                        <h1>GARMENTS</h1>
+                        <h5 style="color:white;">Admin Panel</h5>
+                    </a>
+                </div>
+				@*<div class="login-top">
+                    <h3>SignIn <br> Not a Member? <a href="signup.html">  Sign Up »</a> </h3>
+				</div>*@
+				<div class="alert alert-info" style="display: none;color: red;" id="divErrorLogin">
+					Check UserName or Password.
+				</div>
+				@*<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorLogin">
+						Check UserName or Password.
+					</div>*@
+				<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorLoginActivationFaied">
+					Activate your account.
+				</div>
+				<div class="login-body">
+					<form>
+						<img src="~/Content/Template/gif/Eclipse.gif" id="img" style="display:none;align-content:center" />
+						<input type="text" class="user" id="txtLogUserName" maxlength="40" onblur="ValLog();" placeholder="Enter User Name">
+						<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorLogUserName">
+							User Name is Required.
+						</div>
+						<input type="password" id="txtLogPassword" class="lock" maxlength="20" onchange="ValLog();" placeholder="Password">
+						<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorLogPassword">
+							Password is Required.
+						</div>
+						<input type="button" id="btnLogin" value="Login" />
+						<div class="forgot-grid">
+							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
+							<div class="forgot">
+								<a href="#">forgot password?</a>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</form>
+				</div>
+			</div>
+			@Html.Hidden("RedirectTo", Url.Action("Index", "Dashboard"))
+			@*<div class="login-page-bottom">
+					<h5> - OR -</h5>
+					<div class="social-btn"><a href="#"><i class="fa fa-facebook"></i><i>Sign In with Facebook</i></a></div>
+					<div class="social-btn sb-two"><a href="#"><i class="fa fa-twitter"></i><i>Sign In with Twitter</i></a></div>
+				</div>*@
+		</div>
+	</div>
+</div>
+

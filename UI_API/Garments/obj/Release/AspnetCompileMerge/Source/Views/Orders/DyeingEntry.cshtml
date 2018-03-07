@@ -1,0 +1,160 @@
+﻿
+@{
+	ViewBag.Title = "DyeingEntry";
+	Layout = "~/Views/MasterPage/_Template.cshtml";
+}
+
+<script src="~/Scripts/DyeingEntryAng.js"></script>
+<script src="~/Content/Template/js/dirPagination.js"></script>
+<script src="~/Content/Template/js/moment.js"></script>
+<script src="~/Content/Template/js/bootstrap-datetimepicker.js"></script>
+
+<!-- main content start-->
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			@*<h3 class="title1">Grid system</h3>*@
+			<ol class="breadcrumb">
+				<li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+				<li><a href="@Url.Action("DyeingEntry", "Orders")">Dyeing Entry</a></li>
+				@*<li class="active">Data</li>*@
+			</ol>
+			<div class="grids widget-shadow">
+				<div ng-app="myApp">
+					@*<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">*@
+					<div ng-controller="myCtrl" ng-init="GetAllDyeingEntry()" class="divList">
+						<div class="alert alert-success" role="alert" ng-show="divMsgs">
+							<strong>{{Msg}} </strong>.
+						</div>
+						<div>
+							<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" ng-model="search" id="input-31" />
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Buyer Name</label>
+									<select class="form-control1" ng-model="ddlDyeingEntryBuyerName" ng-blur="Validations()" ng-options=" BuyerName.ID as BuyerName.NAME for BuyerName in BuyerNames">
+										<option value="" disabled selected><< Select Buyer Name >></option>
+									</select>
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorBuyerName">
+										Buyer Name is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Name</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtDyeingEntryName" id="txtDyeingEntryName" ng-blur="Validations()" placeholder="Name">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorName">
+										Name is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Colour</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtDyeingEntryColour" id="txtDyeingEntryColour" ng-blur="Validations()" placeholder="Colour">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorColour">
+										Colour is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Quantity</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryQty" id="txtDyeingEntryQty" ng-blur="Validations()" placeholder="Quantity">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorQuantity">
+										Quantity is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Rate Precost</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryRatePrecost" id="txtDyeingEntryRatePrecost" ng-blur="Validations()" placeholder="Rate Precost">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorRatePrecost">
+										Rate Precost is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Rate Actual</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryRateActual" id="txtDyeingEntryRateActual" ng-blur="Validations()" placeholder="Rate Actual">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorRateActual">
+										Rate Actual is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Percentage</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryPercentage" id="txtDyeingEntryPercentage" ng-blur="Validations()" placeholder="Percentage">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorPercentage">
+										Percentage is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Total Rate Precost</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryTlRatePrecost" id="txtDyeingEntryTlRatePrecost" ng-blur="Validations()" placeholder="Total Rate Precost">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorTlRatePrecost">
+										Total Rate Precost is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Total Actual</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtDyeingEntryTlRateActual" id="txtDyeingEntryTlRateActual" ng-blur="Validations()" placeholder="Total Rate Actual">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorTlRateActual">
+										Total Rate Actual is Required.
+									</div>
+								</div>
+
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave" class="btn btn-default" value="Save" ng-click="AddUpdateDyeingEntry()" />
+								</div>
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave" class="btn btn-default" value="Cancel" ng-click="ClearFields()" />
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<br />
+						
+						<table class="table table-bordered">
+							<thead> <tr> <th>Buyer Name</th> <th>Name</th><th>Quantity</th>  <th>IsActive</th><th>Action</th></tr> </thead>
+							<tbody>
+								@*<tr ng-repeat="Order in Orders">*@
+								<tr dir-paginate="DyeingEntry in DyeingEntrys|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+									<td>
+										{{DyeingEntry.BUYERNAME}}
+									</td>
+									<td>
+										{{DyeingEntry.NAME}}
+									</td>
+									<td>
+										{{DyeingEntry.QTY}}
+									</td>
+									<td>
+										<span ng-if="DyeingEntry.ISACTIVE === 1">
+											<i class="fa fa-check" style="color:green;" aria-hidden="true"></i>
+										</span>
+										<span ng-if="DyeingEntry.ISACTIVE === 0">
+											<i class="fa fa-check" style="color:red;" aria-hidden="true"></i>
+										</span>
+									</td>
+									<td>
+										<a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="EditDyeingEntry(DyeingEntry)"></i></a>
+										<a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="DeleteDyeingEntry(DyeingEntry)"></i></a>
+
+									</td>
+								</tr>
+								@*<b style="color: #5bc0de; margin-left: 20px;">Total Records </b>:
+								<b>{{DyeingEntrys.length}}  </b>*@
+							</tbody>
+						</table>
+						<dir-pagination-controls max-size="10"
+												 direction-links="true"
+												 boundary-links="true">
+						</dir-pagination-controls>
+					</div>
+					@Html.Hidden("DyeingEntryId")
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

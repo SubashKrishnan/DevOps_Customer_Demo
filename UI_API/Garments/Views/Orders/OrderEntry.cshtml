@@ -1,0 +1,100 @@
+﻿@model Garments.Models.defaultModel
+
+@{
+	ViewBag.Title = "Test";
+	Layout = "~/Views/MasterPage/_Template.cshtml";
+}
+
+<script src="~/Scripts/OrderEntryAng.js"></script>
+<script src="~/Content/Template/js/dirPagination.js"></script>
+<script src="~/Content/Template/js/moment.js"></script>
+<script src="~/Content/Template/js/bootstrap-datetimepicker.js"></script>
+
+<!-- main content start-->
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			@*<h3 class="title1">Grid system</h3>*@
+			<div class="grids widget-shadow">
+				<div ng-app="myApp">
+					@*<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">*@
+					<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">
+						<div class="alert alert-success" role="alert" ng-show="divMsgs">
+							<strong>{{OrderMsg}} </strong>.
+						</div>
+						<div>
+							<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" ng-model="search" id="input-31" />
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">First Name</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtOrderBuyerName" id="txtOrderBuyerName" ng-blur="Validations()" placeholder="First Name">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorBuyerName">
+										First Name is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Second Name</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtOrderArticleNo" id="txtOrderArticleNo" ng-blur="Validations()" placeholder="Second Name">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorArticleNo">
+										Second Name is Required.
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave"  class="btn btn-default" value="Save" ng-click="AddUpdateOrders()" />
+									@*<button type="button" class="btn btn-default" id="btnSave" ng-click="AddUpdateOrders()" value="Save"></button>*@
+								</div>
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave" class="btn btn-default" value="Cancel" ng-click="ClearFields()" />
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<br />
+						<table class="table table-bordered">
+							<thead> <tr> <th>First Name</th> <th>Second Name</th><th>IsActive</th><th>Action</th></tr> </thead>
+							<tbody>
+								@*<tr ng-repeat="Order in Orders">*@
+								<tr dir-paginate="Order in Orders|orderBy:sortKey:reverse|filter:search|itemsPerPage:3">
+									<td>
+										{{Order.FIRST_NAME}}
+									</td>
+									<td>
+										{{Order.SECOND_NAME}}
+									</td>
+									<td>
+										<span ng-if="Order.ISACTIVE === 1">
+											<i class="fa fa-check" style="color:green;" aria-hidden="true"></i>
+										</span>
+										<span ng-if="Order.ISACTIVE === 0">
+											<i class="fa fa-check" style="color:red;" aria-hidden="true"></i>
+										</span>
+									</td>
+									<td>
+										<a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="EditOrder(Order)"></i></a>
+										<a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="DeleteOrder(Order)"></i></a>
+
+									</td>
+								</tr>
+								@*<b style="color: #5bc0de; margin-left: 20px;">Total Records </b>:
+								<b>{{Orders.length}}  </b>*@
+							</tbody>
+						</table>
+						<dir-pagination-controls max-size="10"
+												 direction-links="true"
+												 boundary-links="true">
+						</dir-pagination-controls>
+					</div>
+					@Html.Hidden("OrderId")
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
