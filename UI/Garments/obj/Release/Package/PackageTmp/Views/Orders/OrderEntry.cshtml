@@ -1,0 +1,215 @@
+﻿@model Garments.Models.defaultModel
+
+@{
+	ViewBag.Title = "Order Entry";
+	Layout = "~/Views/MasterPage/_Template.cshtml";
+}
+
+<script src="~/Scripts/OrderEntryAng.js"></script>
+<script src="~/Content/Template/js/dirPagination.js"></script>
+<script src="~/Content/Template/js/moment.js"></script>
+<script src="~/Content/Template/js/bootstrap-datetimepicker.js"></script>
+
+<!-- main content start-->
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			@*<h3 class="title1">Grid system</h3>*@
+			<ol class="breadcrumb">
+				<li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+				<li><a href="@Url.Action("OrderEntry", "Orders")">Orders</a></li>
+				@*<li class="active">Data</li>*@
+			</ol>
+			<div class="grids widget-shadow">
+				<div ng-app="myApp">
+					@*<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">*@
+					<div ng-controller="myCtrl" ng-init="GetAllOreders()" class="divList">
+						<div class="alert alert-success" role="alert" ng-show="divMsgs">
+							<strong>{{OrderMsg}} </strong>.
+						</div>
+						<div>
+							<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" ng-model="search" id="input-31" />
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Buyer Name</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtOrderBuyerName" id="txtOrderBuyerName" ng-blur="Validations()" placeholder="Buyer Name">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorBuyerName">
+										Buyer Name is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Article No</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtOrderArticleNo" id="txtOrderArticleNo" ng-blur="Validations()" placeholder="Article No">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorArticleNo">
+										Article No is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Style</label>
+									<input type="text" class="form-control1" maxlength="50" ng-model="txtOrderStyle" id="txtOrderStyle" ng-blur="Validations()" placeholder="Style">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorStyle">
+										Style is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Description</label>
+									<input type="text" class="form-control1" maxlength="250" ng-model="txtOrderDescription" id="txtOrderDescription" ng-blur="Validations()" placeholder="Description">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDescription">
+										Description is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Order Qty(Pcs)</label>
+									<input type="text" class="form-control1" maxlength="7" numbers-only ng-model="txtOrderQty" id="txtOrderQty" ng-blur="Validations()" placeholder="Order Qty">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorQty">
+										Order Qty is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Prog Wt.ttl Qty</label>
+									<input type="text" class="form-control1" maxlength="7" numbers-only ng-model="txtOrderProgQty" id="txtOrderProgQty" ng-blur="Validations()" placeholder="Prog Wt.ttl Qty">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorProgQty">
+										Prog Wt.ttl Qty is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Actl Wt / ttl qty</label>
+									<input type="text" class="form-control1" maxlength="7" numbers-only ng-model="txtOrderActQty" id="txtOrderActQty" ng-blur="Validations()" placeholder="Actl Wt / ttl qty">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorActQty">
+										Actl Wt / ttl qty is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Pc.Wt.Net</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtOrderPcWtNet" id="txtOrderPcWtNet" ng-blur="Validations()" placeholder="Pc.Wt.Net">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorPcWtNet">
+										Pc.Wt.Net is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Pc.Wt.Gross</label>
+									<input type="text" class="form-control1" maxlength="10" decimal-only ng-model="txtOrderPcWtGross" id="txtOrderPcWtGross" ng-blur="Validations()" placeholder="Pc.Wt.Gross">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorPcWtGross">
+										Pc.Wt.Gross is Required.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<div class='input-group date' id='datetimepicker1'>
+										<label for="exampleInputName2">Del Date</label>
+										<input type="text" class="form-control1" maxlength="11" ng-model="txtOrderDelDate" data-date-time-picker id="txtOrderDelDate" ng-blur="Validations()" placeholder="Del Date">
+										<span   class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDelDate">
+										Del Date is Required.
+									</div>
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDelDateValid">
+										Del Date is Invalid.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<div class='input-group date' id='datetimepicker1'>
+										<label for="exampleInputName2">Desp Date</label>
+										<input type="text" class="form-control1" maxlength="11" ng-model="txtOrderDespDate" data-date-time-picker id="txtOrderDespDate" ng-change="Validations()" placeholder="Desp Date">
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDespDate">
+										Desp Date is Required.
+									</div>
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorDespDateValid">
+										Desp Date is Invalid.
+									</div>
+								</div>
+								<div class="col-md-3 grid_box1">
+									<label for="exampleInputName2">Supplier</label>
+									<input type="text" class="form-control1" maxlength="250" ng-model="txtOrderSublier" id="txtOrderSublier" ng-blur="Validations()" placeholder="Supplier">
+									<div class="divValidationMessage topMargin" style="display: none; color: red;" id="divErrorSublier">
+										Supplier is Required.
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave"  class="btn btn-default" value="Save" ng-click="AddUpdateOrders()" />
+									@*<button type="button" class="btn btn-default" id="btnSave" ng-click="AddUpdateOrders()" value="Save"></button>*@
+								</div>
+								<div class="col-md-1 grid_box1">
+									<input type="submit" id="btnSave" class="btn btn-default" value="Cancel" ng-click="ClearFields()" />
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<br />
+						<table class="table table-bordered">
+							<thead> <tr> <th>Buyer Name</th> <th>Article No</th><th>Style</th> <th>Order Qty</th><th>Prog Qty</th><th>Act Qty</th><th>Pc.Wt.Net</th><th>Pc.Wt.Gross</th><th>Del Date</th><th>Desp Date</th> <th>IsActive</th><th>Action</th></tr> </thead>
+							<tbody>
+								@*<tr ng-repeat="Order in Orders">*@
+								<tr dir-paginate="Order in Orders|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+									<td>
+										{{Order.BUYER_NAME}}
+									</td>
+									<td>
+										{{Order.ARTICLE_NO}}
+									</td>
+									<td>
+										{{Order.STYLE}}
+									</td>
+                                    <td>
+                                        {{Order.ORDER_QTY}}
+                                    </td>
+                                    <td>
+                                        {{Order.PROG_QTY}}
+                                    </td>
+                                    <td>
+                                        {{Order.ACT_QTY}}
+                                    </td>
+                                    <td>
+                                        {{Order.PC_WT_NET}}
+                                    </td>
+                                    <td>
+                                        {{Order.PC_WT_GROSS}}
+                                    </td>
+                                    <td>
+                                        {{Order.DEL_DATE}}
+                                    </td>
+                                    <td>
+                                        {{Order.DESP_DATE}}
+                                    </td>
+									<td>
+										<span ng-if="Order.ISACTIVE === 1">
+											<i class="fa fa-check" style="color:green;" aria-hidden="true"></i>
+										</span>
+										<span ng-if="Order.ISACTIVE === 0">
+											<i class="fa fa-check" style="color:red;" aria-hidden="true"></i>
+										</span>
+									</td>
+									<td>
+										<a href=""><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="EditOrder(Order)"></i></a>
+										<a href=""><i class="fa fa-trash-o" aria-hidden="true" ng-click="DeleteOrder(Order)"></i></a>
+
+									</td>
+								</tr>
+								@*<b style="color: #5bc0de; margin-left: 20px;">Total Records </b>:
+								<b>{{Orders.length}}  </b>*@
+							</tbody>
+						</table>
+						<dir-pagination-controls max-size="10"
+												 direction-links="true"
+												 boundary-links="true">
+						</dir-pagination-controls>
+					</div>
+					@Html.Hidden("OrderId")
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

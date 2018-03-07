@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Garments" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Subash_Backup\\Projects\\Garments\\VS\\Garments\ 18-JAN-18\ V1\\Garments\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Subash_Backup\\Projects\\Garments\\VS\\Garments\ 18-JAN-18\ V1\\Garments\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="SQL-Web.config Connection String" description="" value="Data Source=EC2AMAZ-7SCRH53\SQLEXPRESS;Initial Catalog=Garments;User ID=sa;Password=admin@123" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Subash_Backup\\Projects\\Garments\\VS\\Garments\ 18-JAN-18\ V1\\Garments\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQL']/@connectionString" />
+  </parameter>
+</parameters>
