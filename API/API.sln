@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{12FACC05-5D3D-4087-99D8-352252C7758F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseClass", "DataBaseClass\DataBaseClass.csproj", "{DC919010-F5F4-4A81-9F79-F2DBEC34C77B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FACC05-5D3D-4087-99D8-352252C7758F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FACC05-5D3D-4087-99D8-352252C7758F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FACC05-5D3D-4087-99D8-352252C7758F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FACC05-5D3D-4087-99D8-352252C7758F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC919010-F5F4-4A81-9F79-F2DBEC34C77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC919010-F5F4-4A81-9F79-F2DBEC34C77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC919010-F5F4-4A81-9F79-F2DBEC34C77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC919010-F5F4-4A81-9F79-F2DBEC34C77B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
