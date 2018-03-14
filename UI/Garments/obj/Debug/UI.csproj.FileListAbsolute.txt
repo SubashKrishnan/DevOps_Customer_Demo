@@ -30,3 +30,4 @@ D:\Subash_Backup\Projects\DotNet\DO\UI\Garments\bin\System.Web.Razor.xml
 D:\Subash_Backup\Projects\DotNet\DO\UI\Garments\bin\System.Web.WebPages.xml
 D:\Subash_Backup\Projects\DotNet\DO\UI\Garments\bin\System.Web.WebPages.Deployment.xml
 D:\Subash_Backup\Projects\DotNet\DO\UI\Garments\bin\System.Web.WebPages.Razor.xml
+D:\Subash_Backup\Projects\DotNet\DO\UI\Garments\obj\Debug\UI.csprojResolveAssemblyReference.cache

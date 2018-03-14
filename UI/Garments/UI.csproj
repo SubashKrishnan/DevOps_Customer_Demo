@@ -231,8 +231,7 @@
     <Content Include="Views\MasterPage\_Partial.cshtml" />
     <Content Include="Views\MasterPage\_Template.cshtml" />
     <Content Include="Views\Orders\OrderEntry.cshtml" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\Garments.pubxml" />
+    <None Include="Properties\PublishProfiles\UI.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
