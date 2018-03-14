@@ -12,3 +12,4 @@ D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\bin\Debug\DataBaseClas
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.csproj.CoreCompileInputs.cache
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.dll
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.pdb
+D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.csprojResolveAssemblyReference.cache
