@@ -21,7 +21,7 @@ namespace Test
 			DataTable dt = new DataTable();
 			var controller = new API.Controllers.AjaxAPIController();
 			 dt = controller.GetDatas() as DataTable;
-			Assert.AreEqual(10, dt.Rows.Count);
+			Assert.AreEqual(6, dt.Rows.Count);
 		}
 
 	}
