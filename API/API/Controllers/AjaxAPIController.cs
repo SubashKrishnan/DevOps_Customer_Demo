@@ -1,5 +1,5 @@
 ﻿using DataBaseClass;
-using Garments.Models;
+using API.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Garments.Controllers
+namespace API.Controllers
 {
 	public class AjaxAPIController : ApiController
 	{

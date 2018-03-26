@@ -7,7 +7,7 @@ using DataBaseClass;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Garments.Models
+namespace API.Models
 {
 	public class defaultModel : RepositoryBase
 	{

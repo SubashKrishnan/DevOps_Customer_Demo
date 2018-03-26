@@ -13,3 +13,8 @@ D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClas
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.dll
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.pdb
 D:\Subash_Backup\Projects\DotNet\DO\API\API\DataBaseClass\obj\Debug\DataBaseClass.csprojResolveAssemblyReference.cache
+D:\Subash_Backup\GitHub\DevOps_Customer_Demo\API\DataBaseClass\bin\Debug\DataBaseClass.dll
+D:\Subash_Backup\GitHub\DevOps_Customer_Demo\API\DataBaseClass\bin\Debug\DataBaseClass.pdb
+D:\Subash_Backup\GitHub\DevOps_Customer_Demo\API\DataBaseClass\obj\Debug\DataBaseClass.csproj.CoreCompileInputs.cache
+D:\Subash_Backup\GitHub\DevOps_Customer_Demo\API\DataBaseClass\obj\Debug\DataBaseClass.dll
+D:\Subash_Backup\GitHub\DevOps_Customer_Demo\API\DataBaseClass\obj\Debug\DataBaseClass.pdb
