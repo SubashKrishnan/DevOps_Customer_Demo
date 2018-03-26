@@ -35,7 +35,7 @@ app.controller("myCtrl", function ($scope, $http, $timeout) {
 		}).then(function (response) {
 			$scope.Orders = response.data;
 		}, function () {
-			alert("Error Occur");
+			alert("Check DB Connection!");
 		});
 	};
 	$scope.DeleteOrder = function (Order) {
