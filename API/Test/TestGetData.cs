@@ -7,7 +7,8 @@ using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using API.Controllers;
 using API.Models;
-
+using System.IO;
+using System.Data;
 namespace Test
 {
 	[TestClass]
@@ -16,11 +17,11 @@ namespace Test
 		[TestMethod]
 		public void GetDatas_ShouldReturnAllDatas()
 		{
-			//var testProducts;
-			//var controller = new API.Controllers.AjaxAPIController(testProducts);
-
-			//var result = controller.GetAllProducts() as List<Product>;
-			//Assert.AreEqual(testProducts.Count, result.Count);
+			
+			DataTable dt = new DataTable();
+			var controller = new API.Controllers.AjaxAPIController();
+			 dt = controller.GetDatas() as DataTable;
+			Assert.AreEqual(10, dt.Rows.Count);
 		}
 
 	}
